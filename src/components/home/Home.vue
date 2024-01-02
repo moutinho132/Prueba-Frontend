@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted,ref } from 'vue'
 import Customer from '../Customer.vue'
+import HeaderComponent from './HeaderComponent.vue'
 const userDataInf = ref(null);
 const accessToken = ref(null);
 
@@ -25,22 +26,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="green">
-    <header>
-      <div class="green">
-        <a href="#/" class="green">Home</a> |
-        <a href="#/" class="green">List Task</a> |
-        <a href="#/" class="green">Create Task</a> |
-        <a href="#/about" class="green">About</a> |
-        <a href="#/non-existent-path" class="green">Logout</a>
-      </div>
-    </header>
-  </div>
+<header-component/>
   <br>
   <div id="main" class="container">
-    <div class="-summary">
-      <!-- Contenido del cuerpo del modal -->
-      ¡Bienvenido  Sr.{{userName}} {{surname}}
+    <div class="card">
+      <div class="card-body">
+        ¡Bienvenido  Sr.{{userName}} {{surname}}
+      </div>
     </div>
   </div>
 <br>

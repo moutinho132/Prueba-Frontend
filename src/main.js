@@ -7,6 +7,9 @@ import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '@/components/login/Login.vue'
 import Home from '@/components/home/Home.vue'
+import CreateTask from './components/task/CreateTask.vue'
+import Customer from './components/Customer.vue'
+import ListaTask from './components/task/ListaTask.vue'
 
 
 const router = createRouter({
@@ -14,6 +17,11 @@ const router = createRouter({
   routes: [
     { path: '/home', component: Home },
     { path: '/', component: Login },
+    { path: '/create-task', component: CreateTask },
+    { path: '/customer', component: Customer },
+    { path: '/list-task', component: ListaTask },
+
+
     // Otras rutas si es necesario
   ],
 });
