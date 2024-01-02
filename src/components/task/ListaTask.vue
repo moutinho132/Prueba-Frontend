@@ -26,7 +26,6 @@ const submitFormTask = async () => {
     userDataInf.value = JSON.parse(usertData)
     accessToken.value = userDataInf.value.token
     var token = accessToken.value
-    console.log('Evento del enviar task')
     const response = await axios.post('http://localhost:8080/api/task', {
       id:formTask.value.id,
       name: formTask.value.name,
@@ -39,7 +38,6 @@ const submitFormTask = async () => {
       }});
     reponseStatus.value = response.status;
     const responseData = response.data;
-    console.log('Respuesta del servidor:', responseData);
     const codOk = 200
     if(reponseStatus.value== codOk){
       window.location.reload();
@@ -55,7 +53,6 @@ const submitFormTask = async () => {
 };
 function getTask() {
   const usertData = localStorage.getItem('userData')
-  console.log('token para consumir task customer :', usertData)
   userDataInf.value = JSON.parse(usertData)
   accessToken.value = userDataInf.value.token
   var token = accessToken.value
@@ -70,7 +67,6 @@ function getTask() {
         // Manejar la respuesta del microservicio
         reponseStatus.value = response.status
         taskData.value = response.data.items
-        console.log('Data Microservicio Task: ', taskData)
 
       })
       .catch(error => {
@@ -83,9 +79,7 @@ function getTask() {
 }
 
 function view(idTask) {
-  console.log('Function view task')
   const usertData = localStorage.getItem('userData')
-  console.log('token para consumir task customer :', usertData)
   userDataInf.value = JSON.parse(usertData)
   accessToken.value = userDataInf.value.token
   var token = accessToken.value
@@ -102,7 +96,6 @@ function view(idTask) {
         formTask.value.id=taskView.value.id,
         formTask.value.name=taskView.value.customer.person.name;
         formTask.value.description=taskView.value.description;
-        console.log('Data Microservicio Task view: ', taskView)
 
       })
       .catch(error => {
@@ -115,9 +108,7 @@ function view(idTask) {
 }
 
 function deleteTask(idTask) {
-  console.log('Function delete task')
   const usertData = localStorage.getItem('userData')
-  console.log('token para consumir task customer :', usertData)
   userDataInf.value = JSON.parse(usertData)
   accessToken.value = userDataInf.value.token
   var token = accessToken.value
@@ -131,7 +122,6 @@ function deleteTask(idTask) {
         // Manejar la respuesta del microservicio
         reponseStatus.value = response.status
         taskData.value = response.data.items
-        console.log('Data Microservicio Task: ', taskData)
         window.location.reload();
 
       })
@@ -156,7 +146,6 @@ function getAllCustomers() {
   })
     .then(response => {
       // Manejar la respuesta del microservicio
-      console.log('Data Microservicio: ', response.data.items)
       customers.value = response.data.items // Asigna solo el array de items
     })
     .catch(error => {

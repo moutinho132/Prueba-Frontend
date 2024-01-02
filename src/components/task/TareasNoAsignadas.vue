@@ -18,11 +18,10 @@ function getAllUser(){
   axios.get(`${baseURL}/security/users`)
     .then(response => {
       // Manejar la respuesta del microservicio
-      console.log('Data Microservicio: ', response.data)
       return  microserviceData.value = response.data;
     })
     .catch(error => {
-      console.error('Error al llamar al microservicio:', error);
+      console.error('Error', error);
     });
 }
 onMounted(() => {

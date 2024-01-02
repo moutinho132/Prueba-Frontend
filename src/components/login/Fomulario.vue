@@ -17,7 +17,6 @@ const submitFormLogin = async () => {
       password:loginForm.value.password
     });
     const responseData = response.data;
-    console.log('Respuesta del servidor:', responseData);
     if (responseData!=null) {
       // Utiliza Bootstrap para mostrar el modal
       // eslint-disable-next-line no-undef

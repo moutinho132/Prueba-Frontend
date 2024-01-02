@@ -28,7 +28,6 @@ const stateCustomer = reactive({ isActive: true })
 const noContent = reactive({ isActive: true })
 
 function updateTask(item){
-  console.log('Invoca al modal y muestra el contenido del item')
   const updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
   updateModal.show();
  /* setTimeout(() => {
@@ -40,8 +39,6 @@ function getTaskCustomer(idCustomer) {
   loading.value = true;
   stateTask.isActive = true
   const usertData = localStorage.getItem('userData')
-  console.log('Customer ID:', idCustomer)
-  console.log('token para consumir task customer :', usertData)
   userDataInf.value = JSON.parse(usertData)
   accessToken.value = userDataInf.value.token
   var token = accessToken.value
@@ -62,17 +59,14 @@ function getTaskCustomer(idCustomer) {
         const codOk = 200
         if(reponseStatus.value== codOk){
           stateCustomer.isActive = false
-          console.log(stateCustomer)
           taskCustomerData.value = response.data;
         }
-        console.log('Data Microservicio Task: ', taskCustomerData.value)
       })
       .catch(error => {
-        console.error('Error al llamar al microservicio:', error)
+        console.error('Error:', error)
       })
   }catch (err){
     console.error('Error al obtener datos:', err);
-    error.value = 'Error al cargar datos';
   }finally {
     loading.value = false;
     showModal.value = true;
@@ -108,9 +102,7 @@ function cancelNoTasks() {
   // Realiza otras operaciones o simplemente libera
 }
 function completed(idTask){
-  console.log('Funcion para completar id:',idTask)
   const usertData = localStorage.getItem('userData')
-  console.log('token para consumir task customer :', usertData)
   userDataInf.value = JSON.parse(usertData)
   accessToken.value = userDataInf.value.token
   var token = accessToken.value
@@ -133,14 +125,12 @@ function completed(idTask){
           window.location.reload();
 
         }
-        console.log('Data Microservicio Task: ', taskCustomerData.value)
       })
       .catch(error => {
         console.error('Error al llamar al microservicio:', error)
       })
   }catch (err){
     console.error('Error al obtener datos:', err);
-    error.value = 'Error al cargar datos';
   }
 }
 function showNoTasksModal(idCustomer) {
@@ -159,7 +149,6 @@ function getAllCustomers() {
   axios.get(`${baseURL}/customer`)
     .then(response => {
       // Manejar la respuesta del microservicio
-      console.log('Data Microservicio: ', response.data.items)
       customers.value = response.data.items // Asigna solo el array de items
     })
     .catch(error => {

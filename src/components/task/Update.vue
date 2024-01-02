@@ -28,7 +28,6 @@ function getAllCustomers() {
   })
     .then(response => {
       // Manejar la respuesta del microservicio
-      console.log('Data Microservicio: ', response.data.items)
       customers.value = response.data.items // Asigna solo el array de items
     })
     .catch(error => {
@@ -42,7 +41,6 @@ const submitFormTask = async () => {
     userDataInf.value = JSON.parse(usertData)
     accessToken.value = userDataInf.value.token
     var token = accessToken.value
-    console.log('Evento del enviar task')
     const response = await axios.post('http://localhost:8080/api/task', {
       name: formTask.value.name,
       description:formTask.value.description,
@@ -54,7 +52,6 @@ const submitFormTask = async () => {
       }});
     reponseStatus.value = response.status;
     const responseData = response.data;
-    console.log('Respuesta del servidor:', responseData);
     const codOk = 200
     if(reponseStatus.value== codOk){
       setTimeout(() => {

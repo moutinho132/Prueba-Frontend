@@ -17,10 +17,6 @@ onMounted(() => {
     surname.value = userDataInf.value.surname;
   }
   accessToken.value = userDataInf.value.token;
-  console.log('userData: ',usertData);
-  console.log('Token access : ',userDataInf.value)
-  console.log('Name Del User: ',userDataInf.value.name)
-  console.log('Token: ',accessToken.value)
 
 });
 </script>
