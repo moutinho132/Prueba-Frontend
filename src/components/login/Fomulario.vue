@@ -29,11 +29,18 @@ const submitFormLogin = async () => {
         router.push("/home"); // Redirige a la ruta principal (ajusta según tu configuración)
       }, 2000); // Tiempo en milisegundos antes de cerrar el modal y redirigir
     }
+    
+    
   } catch (error) {
-    // Maneja errores de la solicitud
+      // Muestra el modal de error para credenciales incorrectas
+      const ErrorDate = new bootstrap.Modal(document.getElementById('ErrorDate'));
+      ErrorDate.show();
     console.error('Error al realizar la solicitud:', error);
   }
 };
+
+
+
 </script>
 <template>
   <div class="container">
@@ -117,6 +124,23 @@ const submitFormLogin = async () => {
     </div>
   </div>
 
+  <div class="modal fade" id="ErrorDate" tabindex="-1" aria-labelledby="ErrorDate" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ErrorDate">Error en datos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido del cuerpo del modal -->
+          ¡Error en datos.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 
